@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SgeApplication<sge>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sistemadegerenciamentodeestacionamento.sge.SgeApplication",
+            "projectName": "sge",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
