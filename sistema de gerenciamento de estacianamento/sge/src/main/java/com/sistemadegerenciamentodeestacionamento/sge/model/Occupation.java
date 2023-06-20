@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,8 +24,7 @@ import lombok.ToString;
 @Entity
 @AllArgsConstructor
 public class Occupation {
-   
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -33,14 +33,12 @@ public class Occupation {
     @JoinColumn(name = "client_id")
     private Client client;
 
-   @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "parking_spot_id")
     private ParkingSpot parkingSpot;
-
+    @NotBlank(message = "horario de ocupação não especificado")
     private LocalDateTime occupationDateTime;
-    
+
     private LocalDateTime releasDateTime;
-
-
 
 }

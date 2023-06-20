@@ -2,6 +2,8 @@ package com.sistemadegerenciamentodeestacionamento.sge.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,11 +31,10 @@ public class ParkingSpot {
     
     private int spotNumber;
 
-    private boolean isAvailaber;
-
     private String allowedVehicleType;
     
     @OneToMany(mappedBy = "parkingSpot")
+    @JsonIgnore
     private List<Occupation> occupations;
 
 }
