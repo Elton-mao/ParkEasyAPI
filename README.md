@@ -195,7 +195,7 @@ Não foi possível encontrar o ID informado!
 ```
 Aqui está a documentação para o controller `ParkingSpotoController` com o método `createparkingspot`:
 
-## ParkingSpotoController
+## ParkingSpotController
 
 Este controller lida com as operações relacionadas ao cadastro de vagas de estacionamento.
 
