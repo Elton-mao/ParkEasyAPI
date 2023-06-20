@@ -13,7 +13,7 @@ import com.sistemadegerenciamentodeestacionamento.sge.repositories.ParkingSpotRe
 
 @RestController
 @RequestMapping("/parking")
-public class ParkingSpotoController {
+public class ParkingSpotController {
 
     @Autowired
     private ParkingSpotRepository pRepository;
