@@ -1,6 +1,7 @@
 package com.sistemadegerenciamentodeestacionamento.sge.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,13 +28,14 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String type;
 
+    @Column(nullable = false)
     private String plateBoard;
 
     @OneToOne(mappedBy = "vehicle")
     @JsonBackReference
     private Client vehicleOwner;
-
 
 }

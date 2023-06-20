@@ -17,9 +17,6 @@ public class ParkingSpotController {
 
     @Autowired
     private ParkingSpotRepository pRepository;
-    
-    // @Autowired
-    // private ParkingSpotService parkingSpotService = new ParkingSpotService();
 
     @PostMapping
     public ResponseEntity<Object> createparkingspot(@RequestBody ParkingSpot parkingSpot) {
@@ -31,19 +28,7 @@ public class ParkingSpotController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Não foi possivel executar o recurso tente novamente");
         }
-        
+
     }
 
-    // @PostMapping("/{parkingspotId}/occupy/{clientId}")
-    // public ResponseEntity<String> occupyParkingSpot(@PathVariable Long parkingspotId, @PathVariable Long clientId){
-    //     try {
-    //         parkingSpotService.occupyParkingSpot(parkingspotId,clientId);
-    //         return ResponseEntity.ok().body("vaga ocupada com sucesso");
-    //     } catch (IllegalArgumentException e) {
-    //         return ResponseEntity.badRequest().body(e.getMessage());
-    //     }
-    // }
-
-
 }
-
