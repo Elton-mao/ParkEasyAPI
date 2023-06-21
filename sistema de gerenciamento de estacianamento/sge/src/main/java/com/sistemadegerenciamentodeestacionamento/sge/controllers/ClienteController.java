@@ -26,7 +26,7 @@ public class ClienteController {
   private ClienteResitory cResitory;
   @Autowired
   private VehicleRepository vRepository;
-
+  
   // retorna uma lista com todos os clientes cadastrados
   @GetMapping
   @ResponseBody
@@ -51,7 +51,7 @@ public class ClienteController {
   }
 
   // Registra um Novo Cliente no banco de Dados
-  @PostMapping("/save")
+  @PostMapping
   public ResponseEntity<Object> saveClient(@RequestBody Client client) {
     try {
       // verifica se existe existe um veiculo cadastrado

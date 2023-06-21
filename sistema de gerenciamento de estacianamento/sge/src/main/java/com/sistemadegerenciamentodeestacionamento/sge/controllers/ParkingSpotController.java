@@ -21,22 +21,22 @@ public class ParkingSpotController {
     @Autowired
     private ParkingSpotRepository pRepository;
 
+    // retorna uma lista com todas as vagas cadastradas
     @GetMapping
     public ResponseEntity<Object> findAll() {
         try {
             List<ParkingSpot> parkingSpots = pRepository.findAll();
-            if(parkingSpots.size()!=0){
+            if (parkingSpots.size() != 0) {
                 return ResponseEntity.ok().body(parkingSpots);
-            }
-            else{
+            } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não existe Vagas Cadastradas no Momento");
             }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("não foi possivel realizar executar a requisição tente novamente");        }
+            return ResponseEntity.badRequest().body("não foi possivel realizar executar a requisição tente novamente");
+        }
 
     }
-
-
+    // cria uma nova vaga
     @PostMapping
     public ResponseEntity<Object> createparkingspot(@RequestBody ParkingSpot parkingSpot) {
         try {
