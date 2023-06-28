@@ -19,8 +19,11 @@ public class Client extends User {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicle_id")
+
+    @JsonIgnore
     @NotNull(message = "VEICULO NÃO INFORMADO")
     private Vehicle vehicle;
+    
     @JsonIgnore
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Occupation> occupations;

@@ -35,12 +35,15 @@ public class User {
     @Column(name = "user_name")
     @NotBlank(message = "CAMPO NÃO INFORMADO")
     private String name;
+    
     @Column(name = "user_register_name", nullable = false,unique = true)
     @CPF(message = "NUMERO DE CPF DIGITADO INVALIDO")
     private String registerNumber;
+    
     @Column(name = "user_phome", nullable = false,unique = true)
     @NotBlank(message = "CAMPO NÃO INFORMADO")
     private String phone;
+
     @Column(name = "user_email", nullable = false,unique = true)
     @Email
     private String email;

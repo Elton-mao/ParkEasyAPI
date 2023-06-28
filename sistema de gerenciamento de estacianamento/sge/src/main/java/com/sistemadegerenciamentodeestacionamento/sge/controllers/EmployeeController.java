@@ -1,7 +1,6 @@
 package com.sistemadegerenciamentodeestacionamento.sge.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sistemadegerenciamentodeestacionamento.sge.model.Employee;
 import com.sistemadegerenciamentodeestacionamento.sge.repositories.EmployeeRepository;
+import com.sistemadegerenciamentodeestacionamento.sge.service.EmployeeService;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeeService employeeService;
 
     @GetMapping
     public ResponseEntity<Object> listAll() {
@@ -34,10 +38,16 @@ public class EmployeeController {
         }
     }
 
-    // @PostMapping
-    // public ResponseEntity<Object> save(@RequestBody Employee employee){
-    //     employeeRepository.save(employee);
-    //     return ResponseEntity.ok().body(employee);
-    // }
-}
+    @PostMapping("/{jobTitleId}")
+    public ResponseEntity<Object> save(@RequestBody Employee employee, @PathVariable Long jobTitleId) {
+        try {
+            employeeService.saveEmployee(employee, jobTitleId);
+            return ResponseEntity.ok().body("salvo");    
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("erro ao executar o recurso");
+        }
+        
+    }
+    
 
+}

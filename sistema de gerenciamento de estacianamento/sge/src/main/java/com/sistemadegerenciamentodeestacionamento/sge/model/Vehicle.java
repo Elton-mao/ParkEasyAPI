@@ -1,7 +1,5 @@
 package com.sistemadegerenciamentodeestacionamento.sge.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +36,6 @@ public class Vehicle {
     private String plateBoard;
 
     @OneToOne(mappedBy = "vehicle")
-    @JsonIgnore
     private Client vehicleOwner;
 
 }

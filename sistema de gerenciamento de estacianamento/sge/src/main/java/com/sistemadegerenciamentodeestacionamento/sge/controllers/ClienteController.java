@@ -52,7 +52,7 @@ public class ClienteController {
 
   // Registra um Novo Cliente no banco de Dados
   @PostMapping
-  public ResponseEntity<Object> saveClient(@RequestBody Client client) {
+  public ResponseEntity<Object> save(@RequestBody Client client) {
     try {
       // verifica se existe existe um veiculo cadastrado
       Vehicle vehicle = client.getVehicle();
