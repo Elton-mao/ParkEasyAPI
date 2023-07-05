@@ -18,12 +18,21 @@ public class EmployeeService {
 
     public void saveEmployee(Employee employee , Long id){
         if(id == null){
-            throw new IllegalArgumentException("ID INVALIDO");
+            throw new IllegalArgumentException("ID NÃO INFORMADO");
         }
 
         JobTitle jobTitle = jRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Id não existe no banco de dados"));
         employee.setJobTitle(jobTitle);
         eRepository.save(employee);
         
+    }
+
+    public void deleteByid(Long id){
+        if(id != null ){
+            eRepository.deleteById(id);
+        }
+        else{
+            throw new IllegalArgumentException("ID NÃO INFORMADO"); 
+        }
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -42,12 +43,24 @@ public class EmployeeController {
     public ResponseEntity<Object> save(@RequestBody Employee employee, @PathVariable Long jobTitleId) {
         try {
             employeeService.saveEmployee(employee, jobTitleId);
-            return ResponseEntity.ok().body("salvo");    
+            return ResponseEntity.ok().body(employee);    
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("erro ao executar o recurso");
         }
-        
     }
+
+    @GetMapping("delete/{id}")
+    public ResponseEntity<Object> deleteEntity(@PathVariable Long id){
+        try {
+            employeeService.deleteByid(id);
+            return ResponseEntity.ok().body("cliente deletedo com sucesso"+ id);    
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("não foi possivel realizar sua requisição");
+        }
+        
+
+    }
+    
     
 
 }
