@@ -21,7 +21,7 @@ public class OccupationService {
     
     @Autowired 
     private OccupationRepository occupationRepository;
-   
+        //estaciona o veiculo na vaga
     public void occupyParkingSpot(Long parkingSpotId, Long clientId) {
         if (parkingSpotId == null) {
             throw new IllegalArgumentException("ID da vaga de estacionamento inválido");

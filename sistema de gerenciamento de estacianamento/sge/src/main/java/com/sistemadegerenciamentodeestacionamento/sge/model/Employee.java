@@ -20,4 +20,5 @@ public class Employee extends User {
     @ManyToOne
     @JsonBackReference
     private JobTitle jobTitle;
+    private boolean administrator;
 }

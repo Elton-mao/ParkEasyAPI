@@ -1,5 +1,7 @@
 package com.sistemadegerenciamentodeestacionamento.sge.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,17 @@ public class EmployeeService {
         else{
             throw new IllegalArgumentException("ID NÃO INFORMADO"); 
         }
+    }
+
+    public void employeeUpdate(Long id , Employee employeeDetails){
+        Optional<Employee> optinalemployee = eRepository.findById(id);
+       if(optinalemployee.isPresent()){
+        Employee employeeUpdate = optinalemployee.get();
+        employeeUpdate.setEmail(employeeDetails.getEmail());
+        employeeUpdate.setJobTitle(employeeDetails.getJobTitle());
+        employeeUpdate.setName(employeeDetails.getName());
+        employeeUpdate.setRegisterNumber(employeeDetails.getRegisterNumber());
+        eRepository.save(employeeUpdate);
+       }
     }
 }

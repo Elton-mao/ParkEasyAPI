@@ -14,6 +14,7 @@ import com.sistemadegerenciamentodeestacionamento.sge.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -24,7 +25,7 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
     @Autowired
     private EmployeeService employeeService;
-
+    
     @GetMapping
     public ResponseEntity<Object> listAll() {
         try {
@@ -57,10 +58,16 @@ public class EmployeeController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("não foi possivel realizar sua requisição");
         }
-        
-
     }
     
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateById(@PathVariable Long id, @RequestBody Employee employee){
+        
+        employeeService.employeeUpdate(id, employee);
+        
+        return ResponseEntity.ok().body("funcionou");
+    }
+            
     
 
 }
