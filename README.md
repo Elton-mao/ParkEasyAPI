@@ -321,3 +321,42 @@ POST /occupation/123/occupy/456
 "Ocorreu um erro ao processar a solicitação."
 ```
 
+
+### EmployeeController  
+
+**Endpoint: GET /employee**
+- Descrição: Obtém a lista de todos os funcionários cadastrados.
+- Resposta de Sucesso (200 OK):
+  - Corpo: Lista de objetos do tipo Employee contendo os detalhes dos funcionários cadastrados.
+- Resposta de Erro (404 Not Found):
+  - Corpo: "Não existe funcionários cadastrados".
+- Resposta de Erro (500 Internal Server Error):
+  - Corpo: "Houve um erro ao executar o recurso".
+
+**Endpoint: POST /employee/{jobTitleId}**
+- Descrição: Cadastra um novo funcionário associado a um cargo específico.
+- Corpo da Requisição: Objeto JSON representando os detalhes do novo funcionário.
+- Parâmetro: jobTitleId (tipo: Long) - ID do cargo ao qual o funcionário será associado.
+- Resposta de Sucesso (200 OK):
+  - Corpo: Objeto JSON contendo os detalhes do funcionário recém-cadastrado.
+- Resposta de Erro (500 Internal Server Error):
+  - Corpo: "Erro ao executar o recurso".
+
+**Endpoint: GET /employee/delete/{id}**
+- Descrição: Exclui um funcionário pelo seu ID.
+- Parâmetro: id (tipo: Long) - ID do funcionário a ser excluído.
+- Resposta de Sucesso (200 OK):
+  - Corpo: "Funcionário deletado com sucesso {id}".
+- Resposta de Erro (500 Internal Server Error):
+  - Corpo: "Não foi possível realizar sua requisição".
+
+**Endpoint: PUT /employee/update/{id}**
+- Descrição: Atualiza as informações de um funcionário existente pelo seu ID.
+- Parâmetro: id (tipo: Long) - ID do funcionário a ser atualizado.
+- Corpo da Requisição: Objeto JSON contendo os novos detalhes do funcionário.
+- Resposta de Sucesso (200 OK):
+  - Corpo: "Funcionário atualizado com sucesso".
+- Resposta de Erro (500 Internal Server Error):
+  - Corpo: "Erro ao executar o recurso".
+
+Observação: Os códigos de status HTTP (200, 404, 500) indicam o resultado da operação. Os detalhes específicos do payload da resposta (corpo) e dos parâmetros de entrada podem variar dependendo da implementação real da aplicação.
