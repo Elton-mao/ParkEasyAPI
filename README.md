@@ -359,4 +359,44 @@ POST /occupation/123/occupy/456
 - Resposta de Erro (500 Internal Server Error):
   - Corpo: "Erro ao executar o recurso".
 
-Observação: Os códigos de status HTTP (200, 404, 500) indicam o resultado da operação. Os detalhes específicos do payload da resposta (corpo) e dos parâmetros de entrada podem variar dependendo da implementação real da aplicação.
+
+### JobTitleController
+
+**Endpoint: GET /jobtitle**
+- Descrição: Obtém a lista de todos os cargos cadastrados.
+- Resposta de Sucesso (200 OK):
+  - Corpo: Lista de objetos do tipo JobTitle contendo os detalhes dos cargos cadastrados.
+- Resposta de Erro (404 Not Found):
+  - Corpo: "NÃO EXISTE CARGOS CADASTRADOS".
+- Resposta de Erro (400 Bad Request):
+  - Corpo: "Não foi possível processar sua requisição, tente novamente".
+
+**Endpoint: POST /jobtitle**
+- Descrição: Cadastra um novo cargo.
+- Corpo da Requisição: Objeto JSON representando os detalhes do novo cargo.
+- Resposta de Sucesso (200 OK):
+  - Corpo: "Cargo salvo com sucesso".
+- Resposta de Erro (404 Not Found):
+  - Corpo: "Não foi possível executar o recurso, tente novamente".
+
+**Endpoint: GET /jobtitle/delete/{id}**
+- Descrição: Exclui um cargo pelo seu ID.
+- Parâmetro: id (tipo: Long) - ID do cargo a ser excluído.
+- Resposta de Sucesso (200 OK):
+  - Corpo: "Cargo Deletado Com Sucesso".
+- Resposta de Erro (404 Not Found):
+  - Corpo: "ID informado não encontrado".
+- Resposta de Erro (500 Internal Server Error):
+  - Corpo: "Não foi possível realizar sua requisição, tente novamente".
+
+**Endpoint: GET /jobtitle/findbyid/{id}**
+- Descrição: Obtém os detalhes de um cargo pelo seu ID.
+- Parâmetro: id (tipo: Long) - ID do cargo a ser buscado.
+- Resposta de Sucesso (200 OK):
+  - Corpo: Objeto JSON contendo os detalhes do cargo encontrado.
+- Resposta de Erro (404 Not Found):
+  - Corpo: "Não foi encontrado nenhum cargo cadastrado com o ID informado!".
+- Resposta de Erro (500 Internal Server Error):
+  - Corpo: "Não foi possível realizar sua requisição, tente novamente".
+
+
