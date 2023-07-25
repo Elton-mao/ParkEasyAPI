@@ -17,7 +17,7 @@ public class EmployeeService {
 
     @Autowired 
     JobTitleRepository jRepository;
-
+    //registra um funcionario no banco de dados
     public void saveEmployee(Employee employee , Long id){
         if(id == null){
             throw new IllegalArgumentException("ID NÃO INFORMADO");
@@ -28,7 +28,7 @@ public class EmployeeService {
         eRepository.save(employee);
         
     }
-
+    //busca um funcionario pelo id e deleta
     public void deleteByid(Long id){
         if(id != null ){
             eRepository.deleteById(id);
@@ -38,6 +38,7 @@ public class EmployeeService {
         }
     }
 
+    //atualiza o resitro do funcionario no banco de Dados
     public void employeeUpdate(Long id , Employee employeeDetails){
         Optional<Employee> optinalemployee = eRepository.findById(id);
        if(optinalemployee.isPresent()){
